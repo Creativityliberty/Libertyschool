@@ -19,15 +19,26 @@ class CourseSeeder extends Seeder
         $categories = Category::all();
 
         // 1. Trouver ou créer des formateurs pour ces formations
-        // Sophie Lefèvre (YouTube & Montage)
-        $sophie = User::where('email', 'sophie@libertycreativity.com')->first();
-        if (!$sophie) {
-            $sophie = User::factory()->create([
-                'name' => 'Sophie Lefèvre',
-                'email' => 'sophie@libertycreativity.com',
+        // Charles Light (YouTube & Montage)
+        $charles = User::where('email', 'charles@libertycreativity.com')->first();
+        if (!$charles) {
+            $charles = User::factory()->create([
+                'name' => 'Charles Light',
+                'email' => 'charles@libertycreativity.com',
                 'password' => bcrypt('password'),
             ]);
-            $sophie->syncRoles([RoleEnum::Trainer->value]);
+            $charles->syncRoles([RoleEnum::Trainer->value]);
+        }
+
+        // Lionel Numtema (Design Graphique & IA)
+        $lionel = User::where('email', 'lionel@libertycreativity.com')->first();
+        if (!$lionel) {
+            $lionel = User::factory()->create([
+                'name' => 'Lionel Numtema',
+                'email' => 'lionel@libertycreativity.com',
+                'password' => bcrypt('password'),
+            ]);
+            $lionel->syncRoles([RoleEnum::Trainer->value]);
         }
 
         // Kiran Mehta (WordPress & Web)
@@ -61,14 +72,14 @@ class CourseSeeder extends Seeder
 
         // 1. Maîtrisez le Montage Vidéo avec DaVinci Resolve
         Course::create([
-            'trainer_id' => $sophie->id,
+            'trainer_id' => $charles->id,
             'category_id' => $youtubeCategory->id,
             'title' => 'Maîtrisez le Montage Vidéo avec DaVinci Resolve',
             'slug' => Str::slug('Maîtrisez le Montage Vidéo avec DaVinci Resolve'),
             'description' => 'Apprenez le montage vidéo professionnel de A à Z avec DaVinci Resolve. Du dérushage aux effets spéciaux, en passant par l\'étalonnage couleur et le sound design.',
             'price' => 49.00,
             'duration' => 480, // 8 heures
-            'image' => '/assets/images/course_pendule.jpg',
+            'image' => '/assets/images/charles_light.png',
             'featured' => true,
             'benefits' => ['Accès à vie', 'Attestation de complétion', 'Fichiers de projet téléchargeables', 'Exercices pratiques corrigés'],
             'status' => CourseStatus::Published->value,
@@ -77,7 +88,7 @@ class CourseSeeder extends Seeder
 
         // 2. Lancer et Monétiser sa Chaîne YouTube
         Course::create([
-            'trainer_id' => $sophie->id,
+            'trainer_id' => $charles->id,
             'category_id' => $youtubeCategory->id,
             'title' => 'Lancer et Monétiser sa Chaîne YouTube',
             'slug' => Str::slug('Lancer et Monétiser sa Chaîne YouTube'),
@@ -123,18 +134,18 @@ class CourseSeeder extends Seeder
             'published_at' => now(),
         ]);
 
-        // 5. Dessiner sa Première BD : Du Storyboard à la Planche Finale
+        // 5. Design Graphique & IA Générative
         Course::create([
-            'trainer_id' => $kiran->id,
-            'category_id' => $bdCategory->id,
-            'title' => 'Dessiner sa Première BD : Du Storyboard à la Planche Finale',
-            'slug' => Str::slug('Dessiner sa Première BD Du Storyboard à la Planche Finale'),
-            'description' => 'Maîtrisez les fondamentaux de la bande dessinée : scénarisation, mise en page, encrage et colorisation numérique sur tablette graphique.',
+            'trainer_id' => $lionel->id,
+            'category_id' => $designCategory->id,
+            'title' => 'Design Graphique & Intelligence Artificielle Générative',
+            'slug' => Str::slug('Design Graphique et Intelligence Artificielle Generative'),
+            'description' => 'Explorez les outils d\'IA générative (Midjourney, DALL-E, Firefly) pour accélérer votre processus créatif et produire des visuels professionnels.',
             'price' => 59.00,
-            'duration' => 540, // 9 heures
-            'image' => '/assets/images/course_lahochi.jpg',
+            'duration' => 600, // 10 heures
+            'image' => '/assets/images/lionel_numtema.png',
             'featured' => true,
-            'benefits' => ['Accès à vie', 'Brushes Procreate exclusifs', 'Vidéos de démonstration pas à pas'],
+            'benefits' => ['Accès à vie', 'Bibliothèque de prompts', 'Templates Figma inclus', 'Attestation de complétion'],
             'status' => CourseStatus::Published->value,
             'published_at' => now(),
         ]);

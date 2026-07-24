@@ -84,12 +84,21 @@ const steps = [
 
 const featuredTrainers: TrainerProfile[] = [
     {
-        initials: 'SL',
-        name: 'Sophie Lefèvre',
+        initials: 'CL',
+        name: 'Charles Light',
         specialty: 'Montage Vidéo · YouTube',
-        bio: 'Youtubeuse avec plus de 200 000 abonnés, Sophie partage ses méthodes de tournage, montage et référencement pour vivre de sa chaîne.',
+        bio: 'Youtubeur avec plus de 200 000 abonnés, Charles partage ses méthodes de tournage, montage et référencement pour vivre de sa chaîne.',
         courseCount: 4,
         studentCount: '3 800+',
+        rating: 4.9,
+    },
+    {
+        initials: 'LN',
+        name: 'Lionel Numtema',
+        specialty: 'Design Graphique · IA',
+        bio: 'Directeur artistique et expert IA, Lionel enseigne la fusion créative des outils IA et du design traditionnel.',
+        courseCount: 4,
+        studentCount: '4 200+',
         rating: 4.9,
     },
     {
@@ -99,15 +108,6 @@ const featuredTrainers: TrainerProfile[] = [
         bio: 'Développeur web senior, Kiran forme les futurs webmasters à créer des sites performants et sécurisés avec WordPress.',
         courseCount: 6,
         studentCount: '5 100+',
-        rating: 4.8,
-    },
-    {
-        initials: 'VR',
-        name: 'Valérie Renaud',
-        specialty: 'E-Commerce · Copywriting',
-        bio: 'Consultante marketing et copywriter, Valérie accompagne les entrepreneurs dans la création de boutiques en ligne performantes.',
-        courseCount: 3,
-        studentCount: '2 100+',
         rating: 4.8,
     },
 ];

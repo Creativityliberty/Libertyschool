@@ -196,10 +196,10 @@ export const allCourses: Course[] = [
             },
         ],
         trainer: {
-            initials: 'SL',
-            name: 'Sophie Lefèvre',
-            role: 'Youtubeuse & Monteuse vidéo · 200K+ abonnés',
-            bio: "Sophie est créatrice de contenu YouTube depuis 6 ans. Spécialisée en montage vidéo et storytelling visuel, elle a formé plus de 3 000 élèves aux techniques professionnelles.",
+            initials: 'CL',
+            name: 'Charles Light',
+            role: 'Youtubeur & Monteur vidéo · 200K+ abonnés',
+            bio: "Charles est créateur de contenu YouTube depuis 6 ans. Spécialisé en montage vidéo et storytelling visuel, il a formé plus de 3 000 élèves aux techniques professionnelles.",
             courseCount: 4,
             studentCount: '3 800+',
         },
@@ -699,11 +699,11 @@ export const allCourses: Course[] = [
         ],
         trainer: {
             initials: 'LN',
-            name: 'Léa Naouri',
-            role: 'Directrice artistique · Spécialiste IA créative · Formatrice certifiée',
-            bio: "Léa est directrice artistique et early adopter de l'IA générative. Elle combine design traditionnel et outils IA pour une approche créative augmentée et accessible à tous.",
+            name: 'Lionel Numtema',
+            role: 'Directeur artistique · Spécialiste IA créative · Mentor expert',
+            bio: "Lionel est directeur artistique et consultant en design graphique et IA. Il enseigne les méthodes de création hybrides mêlant graphisme traditionnel et technologies génératives.",
             courseCount: 4,
-            studentCount: '1 700+',
+            studentCount: '4 200+',
         },
         objectives: [
             {

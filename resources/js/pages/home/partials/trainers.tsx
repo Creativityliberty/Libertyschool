@@ -19,11 +19,11 @@ type Trainer = {
 const trainers: Trainer[] = [
     {
         id: 1,
-        initials: 'SL',
-        name: 'Sophie Lefèvre',
+        initials: 'CL',
+        name: 'Charles Light',
         specialty: 'Montage Vidéo & YouTube',
-        bio: 'Youtubeuse active avec plus de 200 000 abonnés. Sophie partage ses méthodes de tournage, de montage et de référencement pour vivre de sa chaîne YouTube.',
-        image: '/assets/images/trainer_sophie.jpg',
+        bio: 'Youtubeur actif avec plus de 200 000 abonnés. Charles partage ses méthodes de tournage, de montage et de référencement pour vivre de sa chaîne YouTube.',
+        image: '/assets/images/charles_light.png',
         courseCount: 4,
         studentCount: '3 800+',
         rating: 4.9,
@@ -31,25 +31,25 @@ const trainers: Trainer[] = [
     },
     {
         id: 2,
+        initials: 'LN',
+        name: 'Lionel Numtema',
+        specialty: 'Design Graphique & IA',
+        bio: 'Directeur artistique et consultant IA créative. Lionel enseigne comment fusionner le design traditionnel et l\'intelligence artificielle pour décupler sa productivité.',
+        image: '/assets/images/lionel_numtema.png',
+        courseCount: 4,
+        studentCount: '4 200+',
+        rating: 4.9,
+    },
+    {
+        id: 3,
         initials: 'KM',
         name: 'Kiran Mehta',
         specialty: 'Web & WordPress',
         bio: 'Développeur et intégrateur web senior. Kiran forme les futurs webmasters à concevoir des sites performants et sécurisés avec WordPress sans aucune ligne de code.',
-        image: '/assets/images/trainer_kiran.jpg',
+        image: '/assets/images/course_lumiere_interieure.jpg',
         courseCount: 6,
         studentCount: '5 100+',
         rating: 4.8,
-    },
-    {
-        id: 3,
-        initials: 'ML',
-        name: 'Marie-Laure Dubois',
-        specialty: 'Bande Dessinée & Art',
-        bio: 'Illustratrice professionnelle et auteure de BD. Marie-Laure enseigne les règles fondamentales du dessin, du storyboard et de la mise en couleur sur tablette.',
-        image: '/assets/images/trainer_marie.jpg',
-        courseCount: 5,
-        studentCount: '6 200+',
-        rating: 4.7,
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ const trainers: Trainer[] = [
         name: 'Valérie Renaud',
         specialty: 'E-Commerce & Copywriting',
         bio: 'Consultante marketing et copywriter. Valérie accompagne les entrepreneurs dans la création de boutiques en ligne et la rédaction de fiches produits persuasives.',
-        image: '/assets/images/trainer_valerie.jpg',
+        image: '/assets/images/course_chakra_racine.jpg',
         courseCount: 3,
         studentCount: '2 100+',
         rating: 4.8,
@@ -75,7 +75,7 @@ const itemVariants: Variants = {
 
 export function Trainers() {
     const featured = trainers.find((t) => t.featured) ?? trainers[0];
-    const others = trainers.filter((t) => t.id !== featured.id).slice(0, 3);
+    const others = trainers.filter((t) => t.id !== featured.id);
 
     return (
         <section className="relative overflow-hidden bg-muted/30 py-24 md:py-32 dark:bg-foreground/[0.02]">
