@@ -28,7 +28,7 @@ export function Hero() {
             </div>
 
             <div className="relative z-20 mx-auto w-full max-w-7xl px-6 md:px-8 lg:px-12">
-                <div className="max-w-4xl mx-auto text-center mb-16">
+                <div className="max-w-4xl mx-auto text-center mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -65,12 +65,26 @@ export function Hero() {
                     </motion.div>
                 </div>
 
+                {/* Hero Feature Image */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.8 }}
+                    className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border/40 bg-background/50 p-2 shadow-2xl backdrop-blur mb-16 dark:border-border/60"
+                >
+                    <img
+                        src="/assets/images/hero_banner.png"
+                        alt="Workspace Liberty Creativity School"
+                        className="w-full h-auto aspect-[16/9] object-cover rounded-2xl"
+                    />
+                </motion.div>
+
                 {/* Categories Marquee */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4, duration: 0.8 }}
-                    className="w-full overflow-hidden flex whitespace-nowrap mt-4"
+                    className="w-full overflow-hidden flex whitespace-nowrap"
                 >
                     <div className="flex animate-marquee min-w-max items-center gap-12 md:gap-24 opacity-60 py-4">
                         {/* First set */}
