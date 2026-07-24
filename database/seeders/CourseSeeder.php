@@ -127,7 +127,7 @@ class CourseSeeder extends Seeder
             'description' => 'De l\'installation à la première vente : créez et gérez votre boutique e-commerce avec WooCommerce, optimisez vos fiches produits et configurez les paiements.',
             'price' => 35.00,
             'duration' => 300, // 5 heures
-            'image' => '/assets/images/course_chakra_racine.jpg',
+            'image' => '/assets/images/course_ecommerce.png',
             'featured' => true,
             'benefits' => ['Accès à vie', 'Templates de fiches produits', 'Guide de copywriting e-commerce'],
             'status' => CourseStatus::Published->value,
