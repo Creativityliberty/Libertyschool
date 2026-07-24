@@ -60,7 +60,7 @@ export type Course = {
 export const allCourses: Course[] = [
     {
         id: 1,
-        image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/course_montage_video.png',
         category: 'YouTube & Montage Vidéo',
         title: 'Maîtrisez le Montage Vidéo avec DaVinci Resolve',
         description:

@@ -79,7 +79,7 @@ class CourseSeeder extends Seeder
             'description' => 'Apprenez le montage vidéo professionnel de A à Z avec DaVinci Resolve. Du dérushage aux effets spéciaux, en passant par l\'étalonnage couleur et le sound design.',
             'price' => 49.00,
             'duration' => 480, // 8 heures
-            'image' => '/assets/images/charles_light.png',
+            'image' => '/assets/images/course_montage_video.png',
             'featured' => true,
             'benefits' => ['Accès à vie', 'Attestation de complétion', 'Fichiers de projet téléchargeables', 'Exercices pratiques corrigés'],
             'status' => CourseStatus::Published->value,
