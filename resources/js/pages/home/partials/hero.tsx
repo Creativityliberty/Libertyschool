@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from '@inertiajs/react';
+import { FluidBackground } from '@/components/fluid-background';
 
 export function Hero() {
     const marqueeItems = [
@@ -17,46 +18,45 @@ export function Hero() {
 
     return (
         <section
-            className="relative pt-12 pb-24 overflow-hidden bg-background"
+            className="relative pt-20 pb-28 overflow-hidden bg-background min-h-[90vh] flex flex-col justify-center"
             role="region"
             aria-label="Hero Liberty Creativity School"
         >
-            {/* Background elements */}
-            <div className="pointer-events-none absolute inset-0 z-0">
-                <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-brand-secondary/5 rounded-full blur-3xl" />
-            </div>
+            {/* Interactive Liquid Fluid Background */}
+            <FluidBackground />
+
+            {/* Subtle radial overlay for glassmorphism and focus */}
+            <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0)_0%,var(--background)_80%)]" />
 
             <div className="relative z-20 mx-auto w-full max-w-7xl px-6 md:px-8 lg:px-12">
-                <div className="max-w-4xl mx-auto text-center mb-12">
+                <div className="max-w-4xl mx-auto text-center mb-16">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.8, ease: 'easeOut' }}
                         className="flex flex-col items-center"
                     >
-                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-brand-primary-soft/50 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-primary uppercase backdrop-blur dark:border-border/60 dark:bg-brand-primary-soft/20">
-                            <Sparkles className="h-4 w-4 text-brand-accent" aria-hidden="true" />
+                        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/50 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-primary uppercase backdrop-blur-md shadow-sm dark:border-border/60">
+                            <Sparkles className="h-4 w-4 text-brand-accent animate-pulse" aria-hidden="true" />
                             Nouvelle École Créative
                         </div>
 
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-8 leading-[1.1]">
-                            Apprends des compétences <span className="text-primary">concrètes</span> avec des formations structurées.
+                        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-foreground mb-8 leading-[1.05] max-w-5xl">
+                            Apprends des compétences <span className="text-primary bg-clip-text">concrètes</span> avec des mentors experts.
                         </h1>
 
-                        <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-3xl">
-                            Des cours conçus par des experts pour transformer vos passions en métiers.
-                            Accédez à des contenus pédagogiques de haute qualité, partout et à votre rythme.
+                        <p className="text-lg md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-3xl font-light">
+                            Des cours immersifs de haute qualité conçus pour transformer vos passions en métiers du numérique, à votre propre rythme.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-                            <Button size="lg" className="w-full sm:w-auto min-w-[200px] rounded-full group gap-2" asChild>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
+                            <Button size="lg" className="w-full sm:w-auto min-w-[220px] h-14 text-base rounded-full shadow-lg hover:shadow-primary/20 transition-all duration-300 group gap-2" asChild>
                                 <Link href="/courses">
                                     Parcourir les cours
-                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                 </Link>
                             </Button>
-                            <Button variant="secondary" size="lg" className="w-full sm:w-auto min-w-[200px] rounded-full" asChild>
+                            <Button variant="outline" size="lg" className="w-full sm:w-auto min-w-[220px] h-14 text-base rounded-full border-border/65 bg-background/30 backdrop-blur-md hover:bg-background/80 transition-all duration-300" asChild>
                                 <Link href="/register">
                                     Commencer maintenant
                                 </Link>
@@ -65,28 +65,14 @@ export function Hero() {
                     </motion.div>
                 </div>
 
-                {/* Hero Feature Image */}
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2, duration: 0.8 }}
-                    className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border/40 bg-background/50 p-2 shadow-2xl backdrop-blur mb-16 dark:border-border/60"
-                >
-                    <img
-                        src="/assets/images/hero_banner.png"
-                        alt="Workspace Liberty Creativity School"
-                        className="w-full h-auto aspect-[16/9] object-cover rounded-2xl"
-                    />
-                </motion.div>
-
                 {/* Categories Marquee */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.4, duration: 0.8 }}
-                    className="w-full overflow-hidden flex whitespace-nowrap"
+                    transition={{ delay: 0.6, duration: 1 }}
+                    className="w-full overflow-hidden flex whitespace-nowrap mt-10 border-t border-b border-border/30 bg-background/10 py-5 backdrop-blur-[2px]"
                 >
-                    <div className="flex animate-marquee min-w-max items-center gap-12 md:gap-24 opacity-60 py-4">
+                    <div className="flex animate-marquee min-w-max items-center gap-12 md:gap-24 opacity-75">
                         {/* First set */}
                         {marqueeItems.map((item, idx) => (
                             <div key={`set1-${idx}`} className="flex items-center gap-3">
