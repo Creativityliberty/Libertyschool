@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Database\Seeders;
+
+use App\Enums\RoleEnum;
+use App\Models\Category;
+use App\Models\Course;
+use App\Models\User;
+use App\Enums\CourseStatus;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
+class CourseSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $categories = Category::all();
+
+        // 1. Trouver ou créer des formateurs pour ces formations
+        // Sophie Lefèvre (YouTube & Montage)
+        $sophie = User::where('email', 'sophie@libertycreativity.com')->first();
+        if (!$sophie) {
+            $sophie = User::factory()->create([
+                'name' => 'Sophie Lefèvre',
+                'email' => 'sophie@libertycreativity.com',
+                'password' => bcrypt('password'),
+            ]);
+            $sophie->syncRoles([RoleEnum::Trainer->value]);
+        }
+
+        // Kiran Mehta (WordPress & Web)
+        $kiran = User::where('email', 'kiran@libertycreativity.com')->first();
+        if (!$kiran) {
+            $kiran = User::factory()->create([
+                'name' => 'Kiran Mehta',
+                'email' => 'kiran@libertycreativity.com',
+                'password' => bcrypt('password'),
+            ]);
+            $kiran->syncRoles([RoleEnum::Trainer->value]);
+        }
+
+        // Valérie Renaud (E-Commerce & Copywriting)
+        $valerie = User::where('email', 'valerie@libertycreativity.com')->first();
+        if (!$valerie) {
+            $valerie = User::factory()->create([
+                'name' => 'Valérie Renaud',
+                'email' => 'valerie@libertycreativity.com',
+                'password' => bcrypt('password'),
+            ]);
+            $valerie->syncRoles([RoleEnum::Trainer->value]);
+        }
+
+        // Catégories correspondantes
+        $youtubeCategory = Category::where('slug', 'youtube-montage-video')->first() ?? $categories->first();
+        $wordpressCategory = Category::where('slug', 'wordpress-web-design')->first() ?? $categories->first();
+        $bdCategory = Category::where('slug', 'bande-dessinee-illustration')->first() ?? $categories->first();
+        $ecommerceCategory = Category::where('slug', 'e-commerce-marketing')->first() ?? $categories->first();
+        $designCategory = Category::where('slug', 'design-graphique-ia')->first() ?? $categories->first();
+
+        // 1. Maîtrisez le Montage Vidéo avec DaVinci Resolve
+        Course::create([
+            'trainer_id' => $sophie->id,
+            'category_id' => $youtubeCategory->id,
+            'title' => 'Maîtrisez le Montage Vidéo avec DaVinci Resolve',
+            'slug' => Str::slug('Maîtrisez le Montage Vidéo avec DaVinci Resolve'),
+            'description' => 'Apprenez le montage vidéo professionnel de A à Z avec DaVinci Resolve. Du dérushage aux effets spéciaux, en passant par l\'étalonnage couleur et le sound design.',
+            'price' => 49.00,
+            'duration' => 480, // 8 heures
+            'image' => '/assets/images/course_pendule.jpg',
+            'featured' => true,
+            'benefits' => ['Accès à vie', 'Attestation de complétion', 'Fichiers de projet téléchargeables', 'Exercices pratiques corrigés'],
+            'status' => CourseStatus::Published->value,
+            'published_at' => now(),
+        ]);
+
+        // 2. Lancer et Monétiser sa Chaîne YouTube
+        Course::create([
+            'trainer_id' => $sophie->id,
+            'category_id' => $youtubeCategory->id,
+            'title' => 'Lancer et Monétiser sa Chaîne YouTube',
+            'slug' => Str::slug('Lancer et Monétiser sa Chaîne YouTube'),
+            'description' => 'Un programme complet pour créer votre chaîne YouTube, optimiser votre référencement, fidéliser votre audience et générer des revenus récurrents.',
+            'price' => 39.00,
+            'duration' => 360, // 6 heures
+            'image' => '/assets/images/course_pleine_conscience.jpg',
+            'featured' => true,
+            'benefits' => ['Accès à vie', 'Attestation de complétion', 'Templates de miniatures Canva', 'Guide SEO YouTube complet'],
+            'status' => CourseStatus::Published->value,
+            'published_at' => now(),
+        ]);
+
+        // 3. Créer un Site WordPress Professionnel de A à Z
+        Course::create([
+            'trainer_id' => $kiran->id,
+            'category_id' => $wordpressCategory->id,
+            'title' => 'Créer un Site WordPress Professionnel de A à Z',
+            'slug' => Str::slug('Créer un Site WordPress Professionnel de A à Z'),
+            'description' => 'Apprenez à installer, configurer et personnaliser WordPress pour créer un site vitrine ou un blog professionnel sans aucune ligne de code.',
+            'price' => 45.00,
+            'duration' => 420, // 7 heures
+            'image' => '/assets/images/course_lumiere_interieure.jpg',
+            'featured' => true,
+            'benefits' => ['Accès à vie', 'Thème enfant offert', 'Checklist SEO on-page', 'Support communautaire'],
+            'status' => CourseStatus::Published->value,
+            'published_at' => now(),
+        ]);
+
+        // 4. E-Commerce : Lancer sa Boutique en Ligne avec WooCommerce
+        Course::create([
+            'trainer_id' => $valerie->id,
+            'category_id' => $ecommerceCategory->id,
+            'title' => 'Lancer sa Boutique en Ligne avec WooCommerce',
+            'slug' => Str::slug('Lancer sa Boutique en Ligne avec WooCommerce'),
+            'description' => 'De l\'installation à la première vente : créez et gérez votre boutique e-commerce avec WooCommerce, optimisez vos fiches produits et configurez les paiements.',
+            'price' => 35.00,
+            'duration' => 300, // 5 heures
+            'image' => '/assets/images/course_chakra_racine.jpg',
+            'featured' => true,
+            'benefits' => ['Accès à vie', 'Templates de fiches produits', 'Guide de copywriting e-commerce'],
+            'status' => CourseStatus::Published->value,
+            'published_at' => now(),
+        ]);
+
+        // 5. Dessiner sa Première BD : Du Storyboard à la Planche Finale
+        Course::create([
+            'trainer_id' => $kiran->id,
+            'category_id' => $bdCategory->id,
+            'title' => 'Dessiner sa Première BD : Du Storyboard à la Planche Finale',
+            'slug' => Str::slug('Dessiner sa Première BD Du Storyboard à la Planche Finale'),
+            'description' => 'Maîtrisez les fondamentaux de la bande dessinée : scénarisation, mise en page, encrage et colorisation numérique sur tablette graphique.',
+            'price' => 59.00,
+            'duration' => 540, // 9 heures
+            'image' => '/assets/images/course_lahochi.jpg',
+            'featured' => true,
+            'benefits' => ['Accès à vie', 'Brushes Procreate exclusifs', 'Vidéos de démonstration pas à pas'],
+            'status' => CourseStatus::Published->value,
+            'published_at' => now(),
+        ]);
+    }
+}

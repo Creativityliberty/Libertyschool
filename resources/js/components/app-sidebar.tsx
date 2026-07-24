@@ -1,0 +1,99 @@
+import { Link, usePage } from '@inertiajs/react';
+import { BookOpen, CreditCard, FolderGit2, GraduationCap, LayoutGrid } from 'lucide-react';
+import AppLogo from '@/components/app-logo';
+import { NavMain } from '@/components/nav-main';
+import { NavUser } from '@/components/nav-user';
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+} from '@/components/ui/sidebar';
+import type { NavItem } from '@/types';
+import admin from '@/routes/admin';
+import trainer from '@/routes/trainer';
+import student from '@/routes/student';
+import adminCourses from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
+import adminPlans from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
+import trainerCourses from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
+import studentCourses from '@/actions/App/Http/Controllers/Student/Courses/CourseController';
+
+
+
+export function AppSidebar() {
+    const { auth } = usePage().props;
+    const user = auth.user;
+
+    const dashboardHref = user?.is_admin
+        ? admin.dashboard()
+        : user?.is_trainer
+          ? trainer.dashboard()
+          : student.dashboard();
+
+    const mainNavItems: NavItem[] = [
+        {
+            title: 'Dashboard',
+            href: dashboardHref,
+            icon: LayoutGrid,
+        },
+        ...(user?.is_admin
+            ? [
+                  {
+                      title: 'Gestion des Cours',
+                      href: adminCourses.index(),
+                      icon: FolderGit2,
+                  },
+                  {
+                      title: 'Plans formateurs',
+                      href: adminPlans.index(),
+                      icon: CreditCard,
+                  },
+              ]
+            : []),
+        ...(user?.is_trainer && !user?.is_admin
+            ? [
+                  {
+                      title: 'Mes Cours',
+                      href: trainerCourses.index(),
+                      icon: FolderGit2,
+                  },
+              ]
+            : []),
+        ...(user?.is_student && !user?.is_admin && !user?.is_trainer
+            ? [
+                  {
+                      title: 'Mes Formations',
+                      href: studentCourses.index(),
+                      icon: GraduationCap,
+                  },
+              ]
+            : []),
+    ];
+
+    return (
+        <Sidebar collapsible="icon" variant="inset">
+            <SidebarHeader>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton size="lg" asChild>
+                            <Link href={dashboardHref} prefetch>
+                                <AppLogo />
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarHeader>
+
+            <SidebarContent>
+                <NavMain items={mainNavItems} />
+            </SidebarContent>
+
+            <SidebarFooter>
+                <NavUser />
+            </SidebarFooter>
+        </Sidebar>
+    );
+}
