@@ -143,7 +143,7 @@ class CourseSeeder extends Seeder
             'description' => 'Explorez les outils d\'IA générative (Midjourney, DALL-E, Firefly) pour accélérer votre processus créatif et produire des visuels professionnels.',
             'price' => 59.00,
             'duration' => 600, // 10 heures
-            'image' => '/assets/images/lionel_numtema.png',
+            'image' => '/assets/images/course_design_ia.png',
             'featured' => true,
             'benefits' => ['Accès à vie', 'Bibliothèque de prompts', 'Templates Figma inclus', 'Attestation de complétion'],
             'status' => CourseStatus::Published->value,

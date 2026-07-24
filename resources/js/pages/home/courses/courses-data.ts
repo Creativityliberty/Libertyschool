@@ -637,7 +637,7 @@ export const allCourses: Course[] = [
     },
     {
         id: 5,
-        image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=800&q=80',
+        image: '/assets/images/course_design_ia.png',
         category: 'Design Graphique & IA',
         title: 'Design Graphique & Intelligence Artificielle Générative',
         description:
