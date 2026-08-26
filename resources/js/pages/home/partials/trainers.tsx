@@ -18,18 +18,6 @@ type Trainer = {
 
 const trainers: Trainer[] = [
     {
-        id: 1,
-        initials: 'CL',
-        name: 'Charles Light',
-        specialty: 'Montage Vidéo & YouTube',
-        bio: 'Youtubeur actif avec plus de 200 000 abonnés. Charles partage ses méthodes de tournage, de montage et de référencement pour vivre de sa chaîne YouTube.',
-        image: '/assets/images/charles_light.png',
-        courseCount: 4,
-        studentCount: '3 800+',
-        rating: 4.9,
-        featured: true,
-    },
-    {
         id: 2,
         initials: 'LN',
         name: 'Lionel Numtema',
@@ -39,28 +27,7 @@ const trainers: Trainer[] = [
         courseCount: 4,
         studentCount: '4 200+',
         rating: 4.9,
-    },
-    {
-        id: 3,
-        initials: 'KM',
-        name: 'Kiran Mehta',
-        specialty: 'Web & WordPress',
-        bio: 'Développeur et intégrateur web senior. Kiran forme les futurs webmasters à concevoir des sites performants et sécurisés avec WordPress sans aucune ligne de code.',
-        image: '/assets/images/course_lumiere_interieure.jpg',
-        courseCount: 6,
-        studentCount: '5 100+',
-        rating: 4.8,
-    },
-    {
-        id: 4,
-        initials: 'VR',
-        name: 'Valérie Renaud',
-        specialty: 'E-Commerce & Copywriting',
-        bio: 'Consultante marketing et copywriter. Valérie accompagne les entrepreneurs dans la création de boutiques en ligne et la rédaction de fiches produits persuasives.',
-        image: '/assets/images/course_chakra_racine.jpg',
-        courseCount: 3,
-        studentCount: '2 100+',
-        rating: 4.8,
+        featured: true,
     },
 ];
 
@@ -195,60 +162,62 @@ export function Trainers() {
                 </motion.article>
 
                 {/* 3 other trainers */}
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ staggerChildren: 0.1 }}
-                    className="grid gap-5 sm:grid-cols-3"
-                >
-                    {others.map((trainer) => (
-                        <motion.article
-                            key={trainer.id}
-                            variants={itemVariants}
-                            className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
-                        >
-                            <div className="relative h-48 overflow-hidden">
-                                <img
-                                    src={trainer.image}
-                                    alt={trainer.name}
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                                <div className="absolute top-3 left-3">
-                                    <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-white/90 uppercase backdrop-blur">
-                                        {trainer.specialty}
-                                    </span>
+                {others.length > 0 && (
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-60px' }}
+                        transition={{ staggerChildren: 0.1 }}
+                        className="grid gap-5 sm:grid-cols-3"
+                    >
+                        {others.map((trainer) => (
+                            <motion.article
+                                key={trainer.id}
+                                variants={itemVariants}
+                                className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
+                            >
+                                <div className="relative h-48 overflow-hidden">
+                                    <img
+                                        src={trainer.image}
+                                        alt={trainer.name}
+                                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                                    <div className="absolute top-3 left-3">
+                                        <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-white/90 uppercase backdrop-blur">
+                                            {trainer.specialty}
+                                        </span>
+                                    </div>
+                                    <div className="absolute right-4 bottom-3 left-4">
+                                        <p className="text-sm font-semibold text-white">
+                                            {trainer.name}
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="absolute right-4 bottom-3 left-4">
-                                    <p className="text-sm font-semibold text-white">
-                                        {trainer.name}
-                                    </p>
-                                </div>
-                            </div>
 
-                            <div className="p-5">
-                                <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                                    {trainer.bio}
-                                </p>
-                                <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                                    <span className="flex items-center gap-1">
-                                        <BookOpen className="h-3.5 w-3.5" />
-                                        {trainer.courseCount} cours
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <Users className="h-3.5 w-3.5" />
-                                        {trainer.studentCount}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                                        {trainer.rating.toFixed(1)}
-                                    </span>
+                                <div className="p-5">
+                                    <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                                        {trainer.bio}
+                                    </p>
+                                    <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                                        <span className="flex items-center gap-1">
+                                            <BookOpen className="h-3.5 w-3.5" />
+                                            {trainer.courseCount} cours
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <Users className="h-3.5 w-3.5" />
+                                            {trainer.studentCount}
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                                            {trainer.rating.toFixed(1)}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.article>
-                    ))}
-                </motion.div>
+                            </motion.article>
+                        ))}
+                    </motion.div>
+                )}
             </div>
         </section>
     );

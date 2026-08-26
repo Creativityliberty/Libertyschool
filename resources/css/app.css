@@ -7,9 +7,51 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Semibold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Degular';
+    src: url('../fonts/DegularTextDemo-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+
 @theme {
     --font-sans:
-        'Space Grotesk', ui-sans-serif, system-ui, sans-serif,
+        'Degular', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
 
