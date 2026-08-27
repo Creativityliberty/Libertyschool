@@ -118,6 +118,6 @@ RUN chmod +x /usr/local/bin/start.sh
 EXPOSE 80
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
-    CMD curl -fsSL http://localhost/ > /dev/null || exit 1
+    CMD curl -fsS http://127.0.0.1/up || exit 1
 
 CMD ["/usr/local/bin/start.sh"]
